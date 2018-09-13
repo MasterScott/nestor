@@ -511,18 +511,18 @@ class MyTaggingToolWindow(Qw.QMainWindow, Ui_MainWindow_taggingTool):
                                                                         new_notes)
                     self.tableWidget_1gram_TagContainer.userUpdate.add(self.dataframe_1Gram.index.get_loc(btn.text()))
 
-                elif self.dataframe_1Gram.loc[btn.text()]['alias']:
-                    self.dataframe_1Gram = self._set_dataframeItemValue(self.dataframe_1Gram, btn.text(), '',
-                                                                       '', '')
-
-                    self.tableWidget_1gram_TagContainer.userUpdate.add(self.dataframe_1Gram.index.get_loc(btn.text()))
+                # elif self.dataframe_1Gram.loc[btn.text()]['alias']:
+                #     self.dataframe_1Gram = self._set_dataframeItemValue(self.dataframe_1Gram, btn.text(), '',
+                #                                                        '', '')
+                #
+                #     self.tableWidget_1gram_TagContainer.userUpdate.add(self.dataframe_1Gram.index.get_loc(btn.text()))
 
 
             self.tableWidget_1gram_TagContainer.printDataframe_tableView()
 
             self.update_progress_bar(self.progressBar_1gram_TagComplete, self.dataframe_1Gram)
             self.tableWidget_1gram_TagContainer.selectRow(self.tableWidget_1gram_TagContainer.currentRow() + 1)
-
+            print("%1gram" + str(self.progressBar_1gram_TagComplete.value()))
 
         except (IndexError, ValueError):
             Qw.QMessageBox.about(self, 'Can\'t select', "You should select a row first")
@@ -546,7 +546,7 @@ class MyTaggingToolWindow(Qw.QMainWindow, Ui_MainWindow_taggingTool):
             self.tableWidget_Ngram_TagContainer.printDataframe_tableView()
             self.update_progress_bar(self.progressBar_Ngram_TagComplete, self.dataframe_NGram)
             self.tableWidget_Ngram_TagContainer.selectRow(self.tableWidget_Ngram_TagContainer.currentRow() + 1)
-
+            print("%Ngram" + str(self.progressBar_Ngram_TagComplete.value()))
         except (IndexError, ValueError):
             Qw.QMessageBox.about(self, 'Can\'t select', "You should select a row first")
         pass
